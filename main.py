@@ -15,6 +15,7 @@ else:
 
 cursor = mydb.cursor()
 
+Terminal$0
 def add_employee():
     name = input("Enter Employee name :")
     department = input("Enter department name :")
@@ -69,7 +70,7 @@ def delete_employee():
         print("✅ Successfully deleted the employee details")
 
 def search_department():
-    dept = input("Enter department name")
+    dept = input("Enter department name :")
 
     cursor.execute("select id,name,department,salary from employees where department = %s",(dept,))
     records = cursor.fetchall()
@@ -105,6 +106,8 @@ while True:
         search_department()
     elif choice == '6':
         print("Closing connection.......")
+        cursor.close()
+        mydb.close()
         print("Exited Successfully")
         break
     else:
